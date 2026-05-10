@@ -8,6 +8,10 @@ import {
   mergePromptLibraryIndexItems,
 } from '@/shared/prompt-library/imports';
 import { getPromptCategories } from '@/shared/prompt-library/insights';
+import {
+  sanitizePromptLibraryDataset,
+  sanitizePromptLibraryItem,
+} from '@/shared/prompt-library/sanitize';
 import type {
   PromptLibraryDataset,
   PromptLibraryIndexDataset,
