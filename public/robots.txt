@@ -11,6 +11,6 @@ Disallow: /ai-image-generator
 Disallow: /ai-music-generator
 Disallow: /hairstyles
 
-Sitemap: https://gpt-image-2-ai.org/sitemap.xml
-Sitemap: https://gpt-image-2-ai.org/prompt-sitemap.xml
-Sitemap: https://gpt-image-2-ai.org/showcase-sitemap.xml
+Sitemap: https://gptimg2.art/sitemap.xml
+Sitemap: https://gptimg2.art/prompt-sitemap.xml
+Sitemap: https://gptimg2.art/showcase-sitemap.xml

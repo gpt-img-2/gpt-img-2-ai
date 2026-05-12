@@ -30,7 +30,7 @@ export function VideoObjectSchema({
   height,
 }: VideoObjectSchemaProps) {
   const appName = process.env.NEXT_PUBLIC_APP_NAME || 'ChatGPT Image 2 Generator';
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gpt-image-2-ai.org';
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://gptimg2.art';
 
   const schema = {
     '@context': 'https://schema.org',

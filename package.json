@@ -2,8 +2,8 @@
   "name": "Happy Horse-template-nano-banana",
   "version": "1.8.2",
   "private": true,
-  "author": "gpt-image-2-ai.org",
-  "homepage": "https://gpt-image-2-ai.org",
+  "author": "gptimg2.art",
+  "homepage": "https://gptimg2.art",
   "packageManager": "pnpm@9.7.1",
   "engines": {
     "node": ">=20.11.0 <25",

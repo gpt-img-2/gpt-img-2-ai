@@ -69,7 +69,7 @@ function trimTrailingSlash(value: string) {
 }
 
 export function getCanonicalAppUrl() {
-  return trimTrailingSlash(envConfigs.app_url || 'https://gpt-image-2-ai.org');
+  return trimTrailingSlash(envConfigs.app_url || 'https://gptimg2.art');
 }
 
 export function getCanonicalUrl(path: string, locale = defaultLocale) {

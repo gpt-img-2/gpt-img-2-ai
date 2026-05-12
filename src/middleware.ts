@@ -6,6 +6,35 @@ import { routing } from '@/core/i18n/config';
 
 const intlMiddleware = createIntlMiddleware(routing);
 
+const siteMigrationTargetOrigin = 'https://gptimg2.art';
+const siteMigrationSourceHosts = new Set([
+  'gpt-image-2-ai.org',
+  'www.gpt-image-2-ai.org',
+  'cf-gpt-image-2-ai.org',
+  'www.cf-gpt-image-2-ai.org',
+]);
+const siteMigrationUtmSource = 'gpt-image-2-ai.org';
+
+function getSiteMigrationRedirectUrl(request: NextRequest) {
+  const sourceHost = request.nextUrl.hostname.toLowerCase();
+
+  if (!siteMigrationSourceHosts.has(sourceHost)) {
+    return null;
+  }
+
+  const redirectUrl = new URL(
+    request.nextUrl.pathname,
+    siteMigrationTargetOrigin
+  );
+  redirectUrl.search = request.nextUrl.search;
+
+  if (!redirectUrl.searchParams.has('utm_source')) {
+    redirectUrl.searchParams.set('utm_source', siteMigrationUtmSource);
+  }
+
+  return redirectUrl;
+}
+
 function normalizeDuplicatedLocalePath(pathname: string) {
   const segments = pathname.split('/');
   const firstLocale = segments[1];
@@ -25,6 +54,11 @@ function normalizeDuplicatedLocalePath(pathname: string) {
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const siteMigrationRedirectUrl = getSiteMigrationRedirectUrl(request);
+
+  if (siteMigrationRedirectUrl) {
+    return NextResponse.redirect(siteMigrationRedirectUrl, 308);
+  }
 
   const normalizedDuplicatedLocalePath =
     normalizeDuplicatedLocalePath(pathname);

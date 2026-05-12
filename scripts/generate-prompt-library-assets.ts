@@ -33,7 +33,7 @@ const promptLibraryAssetBaseUrl = (
 const siteUrl = (
   process.env.NEXT_PUBLIC_APP_URL ||
   process.env.APP_URL ||
-  'https://gpt-image-2-ai.org'
+  'https://gptimg2.art'
 ).replace(/\/+$/, '');
 const defaultLocale = process.env.NEXT_PUBLIC_DEFAULT_LOCALE || 'en';
 const promptLibraryLocales = ['en', 'zh'];

@@ -20,7 +20,7 @@ if (
 export type ConfigMap = Record<string, string>;
 
 export const envConfigs: ConfigMap = {
-  app_url: process.env.NEXT_PUBLIC_APP_URL ?? 'https://gpt-image-2-ai.org',
+  app_url: process.env.NEXT_PUBLIC_APP_URL ?? 'https://gptimg2.art',
   app_name: process.env.NEXT_PUBLIC_APP_NAME ?? 'ChatGPT Image 2 Generator',
   site_code:
     process.env.NEXT_PUBLIC_SITE_CODE ?? process.env.SITE_CODE ?? 'happyhorse',
