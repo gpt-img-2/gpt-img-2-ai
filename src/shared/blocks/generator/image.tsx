@@ -363,6 +363,7 @@ export function ImageGenerator({
     setIsShowSignModal,
     fetchUserCredits,
     currentSubscription,
+    hasPaidEntitlement,
     hasFetchedCurrentSubscription,
     isFetchingCurrentSubscription,
     fetchCurrentSubscription,
@@ -544,8 +545,10 @@ export function ImageGenerator({
       useGoogleSearch,
     ]
   );
-  const isCurrentMember = Boolean(currentSubscription);
-  const showCreditsCost = hasFetchedCurrentSubscription && isCurrentMember;
+  const hasQueueBypassAccess = Boolean(
+    currentSubscription || hasPaidEntitlement
+  );
+  const showCreditsCost = hasFetchedCurrentSubscription && hasQueueBypassAccess;
   const imageQueueWaitRangeMs = useMemo(
     () =>
       resolvePriorityQueueWaitRangeMs({
@@ -1136,7 +1139,7 @@ export function ImageGenerator({
   } = useMembershipPriorityQueue({
     mediaType: 'image',
     userId: user?.id ?? null,
-    enabled: hasFetchedCurrentSubscription && !isCurrentMember,
+    enabled: hasFetchedCurrentSubscription && !hasQueueBypassAccess,
     waitRangeMs: imageQueueWaitRangeMs,
     snapshotDigest: queueSnapshotDigest,
     serializedPayload: queuePayload,
@@ -1271,23 +1274,25 @@ export function ImageGenerator({
       return;
     }
 
-    let currentSubscriptionForAttempt = currentSubscription;
+    let hasQueueBypassAccessForAttempt = hasQueueBypassAccess;
 
-    if (!hasFetchedCurrentSubscription || !isCurrentMember) {
+    if (!hasFetchedCurrentSubscription || !hasQueueBypassAccessForAttempt) {
       const subscriptionResult = await fetchCurrentSubscription({
-        force: !isCurrentMember,
+        force: !hasQueueBypassAccessForAttempt,
       });
       if (!subscriptionResult.ok) {
         toast.error(queueCopy.membershipCheckingLabel);
         return;
       }
-      currentSubscriptionForAttempt = subscriptionResult.subscription;
+      hasQueueBypassAccessForAttempt = Boolean(
+        subscriptionResult.subscription || subscriptionResult.hasPaidEntitlement
+      );
     } else if (isFetchingCurrentSubscription) {
       toast.error(queueCopy.membershipCheckingLabel);
       return;
     }
 
-    if (currentSubscriptionForAttempt && remainingCredits < costCredits) {
+    if (hasQueueBypassAccessForAttempt && remainingCredits < costCredits) {
       setCreditFallback(
         createGenerationCreditFallbackPayload({
           mediaType: 'image',
@@ -1356,7 +1361,7 @@ export function ImageGenerator({
       },
     };
 
-    if (currentSubscriptionForAttempt) {
+    if (hasQueueBypassAccessForAttempt) {
       await submitImageGeneration();
       return;
     }

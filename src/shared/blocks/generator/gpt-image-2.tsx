@@ -387,8 +387,10 @@ export function GptImage2Generator({
     () => resolveCostCredits(currentSubscription),
     [currentSubscription, resolveCostCredits]
   );
-  const isCurrentMember = Boolean(currentSubscription);
-  const showCreditsCost = hasFetchedCurrentSubscription && isCurrentMember;
+  const hasQueueBypassAccess = Boolean(
+    currentSubscription || hasPaidEntitlement
+  );
+  const showCreditsCost = hasFetchedCurrentSubscription && hasQueueBypassAccess;
   const imageQueueWaitRangeMs = useMemo(
     () =>
       resolvePriorityQueueWaitRangeMs({
@@ -1040,7 +1042,7 @@ export function GptImage2Generator({
     mediaType: 'image',
     scope: 'gpt-image-2',
     userId: user?.id ?? null,
-    enabled: hasFetchedCurrentSubscription && !isCurrentMember,
+    enabled: hasFetchedCurrentSubscription && !hasQueueBypassAccess,
     waitRangeMs: imageQueueWaitRangeMs,
     snapshotDigest: queueSnapshotDigest,
     serializedPayload: queuePayload,
@@ -1089,26 +1091,27 @@ export function GptImage2Generator({
     }
 
     let currentSubscriptionForAttempt = currentSubscription;
-    if (!hasFetchedCurrentSubscription || !isCurrentMember) {
+    let hasPaidEntitlementForAttempt = hasPaidEntitlement;
+    if (!hasFetchedCurrentSubscription || !hasPaidEntitlementForAttempt) {
       const subscriptionResult = await fetchCurrentSubscription({
-        force: !isCurrentMember,
+        force: !hasPaidEntitlementForAttempt,
       });
       if (!subscriptionResult.ok) {
         toast.error(queueCopy.membershipCheckingLabel);
         return;
       }
       currentSubscriptionForAttempt = subscriptionResult.subscription;
+      hasPaidEntitlementForAttempt = subscriptionResult.hasPaidEntitlement;
     } else if (isFetchingCurrentSubscription) {
       toast.error(queueCopy.membershipCheckingLabel);
       return;
     }
 
-    const attemptCostCredits = resolveCostCredits(currentSubscriptionForAttempt);
+    const attemptCostCredits = resolveCostCredits(
+      currentSubscriptionForAttempt
+    );
 
-    if (
-      currentSubscriptionForAttempt &&
-      remainingCredits < attemptCostCredits
-    ) {
+    if (hasPaidEntitlementForAttempt && remainingCredits < attemptCostCredits) {
       setCreditFallback(
         createGenerationCreditFallbackPayload({
           mediaType: 'image',
@@ -1156,7 +1159,7 @@ export function GptImage2Generator({
 
     pendingGenerateRequestRef.current = request;
     setCreditFallback(null);
-    if (currentSubscriptionForAttempt) {
+    if (hasPaidEntitlementForAttempt) {
       await submitImageGeneration();
       return;
     }

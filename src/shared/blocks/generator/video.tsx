@@ -1190,6 +1190,7 @@ export function VideoGenerator({
     configs,
     hasFetchedConfigs,
     currentSubscription,
+    hasPaidEntitlement,
     hasFetchedCurrentSubscription,
     isFetchingCurrentSubscription,
     fetchCurrentSubscription,
@@ -1858,8 +1859,10 @@ export function VideoGenerator({
       options: currentOptions,
     });
   }, [currentOptions, currentScene, effectiveModel]);
-  const isCurrentMember = Boolean(currentSubscription);
-  const showCreditsCost = hasFetchedCurrentSubscription && isCurrentMember;
+  const hasQueueBypassAccess = Boolean(
+    currentSubscription || hasPaidEntitlement
+  );
+  const showCreditsCost = hasFetchedCurrentSubscription && hasQueueBypassAccess;
   const queueCopy = useMemo(
     () => ({
       title: t.has('queue.title') ? t('queue.title') : 'Standard Queue',
@@ -3814,7 +3817,7 @@ export function VideoGenerator({
   } = useMembershipPriorityQueue({
     mediaType: 'video',
     userId: user?.id ?? null,
-    enabled: hasFetchedCurrentSubscription && !isCurrentMember,
+    enabled: hasFetchedCurrentSubscription && !hasQueueBypassAccess,
     waitRangeMs: videoQueueWaitRangeMs,
     snapshotDigest: queueSnapshotDigest,
     serializedPayload: queuePayload,
@@ -4022,23 +4025,25 @@ export function VideoGenerator({
       return;
     }
 
-    let currentSubscriptionForAttempt = currentSubscription;
+    let hasQueueBypassAccessForAttempt = hasQueueBypassAccess;
 
-    if (!hasFetchedCurrentSubscription || !isCurrentMember) {
+    if (!hasFetchedCurrentSubscription || !hasQueueBypassAccessForAttempt) {
       const subscriptionResult = await fetchCurrentSubscription({
-        force: !isCurrentMember,
+        force: !hasQueueBypassAccessForAttempt,
       });
       if (!subscriptionResult.ok) {
         showGenerationError(queueCopy.membershipCheckingLabel);
         return;
       }
-      currentSubscriptionForAttempt = subscriptionResult.subscription;
+      hasQueueBypassAccessForAttempt = Boolean(
+        subscriptionResult.subscription || subscriptionResult.hasPaidEntitlement
+      );
     } else if (isFetchingCurrentSubscription) {
       showGenerationError(queueCopy.membershipCheckingLabel);
       return;
     }
 
-    if (currentSubscriptionForAttempt && remainingCredits < costCredits) {
+    if (hasQueueBypassAccessForAttempt && remainingCredits < costCredits) {
       setCreditFallback(
         createGenerationCreditFallbackPayload({
           mediaType: 'video',
@@ -4064,7 +4069,7 @@ export function VideoGenerator({
       options: currentOptions,
     };
 
-    if (currentSubscriptionForAttempt) {
+    if (hasQueueBypassAccessForAttempt) {
       await submitVideoGeneration();
       return;
     }

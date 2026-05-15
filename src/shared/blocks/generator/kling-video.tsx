@@ -713,6 +713,7 @@ export function KlingVideoGenerator({
     setIsShowSignModal,
     fetchUserCredits,
     currentSubscription,
+    hasPaidEntitlement,
     hasFetchedCurrentSubscription,
     isFetchingCurrentSubscription,
     fetchCurrentSubscription,
@@ -1032,8 +1033,10 @@ export function KlingVideoGenerator({
     shots.length < 10 &&
     storyDurationRemaining > 0;
   const remainingCredits = user?.credits?.remainingCredits ?? 0;
-  const isCurrentMember = Boolean(currentSubscription);
-  const showCreditsCost = hasFetchedCurrentSubscription && isCurrentMember;
+  const hasQueueBypassAccess = Boolean(
+    currentSubscription || hasPaidEntitlement
+  );
+  const showCreditsCost = hasFetchedCurrentSubscription && hasQueueBypassAccess;
   const videoQueueWaitRangeMs = useMemo(
     () =>
       resolvePriorityQueueWaitRangeMs({
@@ -2133,7 +2136,7 @@ export function KlingVideoGenerator({
     mediaType: 'video',
     scope: KLING_QUEUE_SCOPE,
     userId: user?.id ?? null,
-    enabled: hasFetchedCurrentSubscription && !isCurrentMember,
+    enabled: hasFetchedCurrentSubscription && !hasQueueBypassAccess,
     waitRangeMs: videoQueueWaitRangeMs,
     snapshotDigest: queueSnapshotDigest,
     serializedPayload: queuePayload,
@@ -2279,23 +2282,25 @@ export function KlingVideoGenerator({
       return;
     }
 
-    let currentSubscriptionForAttempt = currentSubscription;
+    let hasQueueBypassAccessForAttempt = hasQueueBypassAccess;
 
-    if (!hasFetchedCurrentSubscription || !isCurrentMember) {
+    if (!hasFetchedCurrentSubscription || !hasQueueBypassAccessForAttempt) {
       const subscriptionResult = await fetchCurrentSubscription({
-        force: !isCurrentMember,
+        force: !hasQueueBypassAccessForAttempt,
       });
       if (!subscriptionResult.ok) {
         toast.error(queueCopy.membershipCheckingLabel);
         return;
       }
-      currentSubscriptionForAttempt = subscriptionResult.subscription;
+      hasQueueBypassAccessForAttempt = Boolean(
+        subscriptionResult.subscription || subscriptionResult.hasPaidEntitlement
+      );
     } else if (isFetchingCurrentSubscription) {
       toast.error(queueCopy.membershipCheckingLabel);
       return;
     }
 
-    if (currentSubscriptionForAttempt && remainingCredits < costCredits) {
+    if (hasQueueBypassAccessForAttempt && remainingCredits < costCredits) {
       setCreditFallback(
         createGenerationCreditFallbackPayload({
           mediaType: 'video',
@@ -2313,7 +2318,7 @@ export function KlingVideoGenerator({
       return;
     }
 
-    if (currentSubscriptionForAttempt) {
+    if (hasQueueBypassAccessForAttempt) {
       await submitKlingGeneration(generationRequest);
       return;
     }
