@@ -84,7 +84,6 @@ import {
   getSeedance2CanonicalScene,
   getSeedanceReferenceVideoPixelLimitMessage,
   isSeedance2AssetModel,
-  isSeedance2FaceModel,
   isSeedance2GenerationModel,
   isSeedance15Model,
   normalizeSeedance2Duration,
@@ -2119,17 +2118,14 @@ export function VideoGenerator({
       let nextModel: SeedanceModel = isModelSelectorVisible
         ? SEEDANCE_2_MODEL
         : SEEDANCE_15_MODEL;
-      let nextRealPersonMode = realPersonMode;
-
       if (isModelSelectorVisible && detail.model) {
         nextModel = isSeedance2AssetModel(detail.model)
           ? SEEDANCE_2_MODEL
           : (getSeedance2BaseGenerationModel(detail.model) ?? detail.model);
-        nextRealPersonMode = isSeedance2FaceModel(detail.model);
       }
 
       setModel(nextModel);
-      setRealPersonMode(nextRealPersonMode);
+      setRealPersonMode(false);
 
       if (isSeedance15Model(nextModel)) {
         setUseEndFrameControl(false);
@@ -2168,7 +2164,7 @@ export function VideoGenerator({
 
       hasPrefilledRef.current = true;
     },
-    [isModelSelectorVisible, realPersonMode]
+    [isModelSelectorVisible]
   );
 
   useEffect(() => {
