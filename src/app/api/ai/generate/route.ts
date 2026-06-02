@@ -78,11 +78,19 @@ import {
   NewAITask,
   updateAITaskById,
 } from '@/shared/models/ai_task';
-import { getAllConfigs } from '@/shared/models/config';
+import { Configs, getAllConfigs } from '@/shared/models/config';
 import { getRemainingCredits } from '@/shared/models/credit';
 import { getCurrentSubscription } from '@/shared/models/subscription';
 import { getUserInfo } from '@/shared/models/user';
 import { getAIService } from '@/shared/services/ai';
+import {
+  CREEM_PROMPT_MODERATION_REJECTED_MESSAGE,
+  CREEM_PROMPT_MODERATION_UNAVAILABLE_MESSAGE,
+  ensureCreemPromptAllowed,
+  isCreemPromptModerationEnabled,
+  isCreemPromptModerationFailClosed,
+  PromptModerationDecisionError,
+} from '@/shared/services/content-moderation';
 
 type PersistedAITask = Awaited<ReturnType<typeof createAITask>>;
 
@@ -1024,6 +1032,126 @@ async function persistSubmittedAITask({
   throw lastError;
 }
 
+function shouldModerateGenerationPrompt({
+  configs,
+  mediaType,
+}: {
+  configs: Configs;
+  mediaType?: string | null;
+}) {
+  return (
+    isCreemPromptModerationEnabled(configs) &&
+    (mediaType === AIMediaType.IMAGE || mediaType === AIMediaType.VIDEO)
+  );
+}
+
+function buildModerationExternalId({
+  userId,
+  localTaskId,
+  stage,
+}: {
+  userId: string;
+  localTaskId: string;
+  stage: string;
+}) {
+  return `user_${userId}:task_${localTaskId}:${stage}`;
+}
+
+async function moderateGenerationPrompt({
+  configs,
+  mediaType,
+  prompt,
+  userId,
+  localTaskId,
+  provider,
+  model,
+  stage,
+}: {
+  configs: Configs;
+  mediaType: string;
+  prompt?: string | null;
+  userId: string;
+  localTaskId: string;
+  provider: string;
+  model: string;
+  stage: 'user_prompt' | 'provider_prompt';
+}) {
+  if (!shouldModerateGenerationPrompt({ configs, mediaType })) {
+    return null;
+  }
+
+  const trimmedPrompt = prompt?.trim() ?? '';
+  if (!trimmedPrompt) {
+    return null;
+  }
+
+  const externalId = buildModerationExternalId({
+    userId,
+    localTaskId,
+    stage,
+  });
+
+  try {
+    const result = await ensureCreemPromptAllowed({
+      configs,
+      prompt: trimmedPrompt,
+      externalId,
+    });
+
+    console.info('[ai.moderation] allowed', {
+      userId,
+      localTaskId,
+      externalId,
+      stage,
+      mediaType,
+      provider,
+      model,
+      moderationProvider: result.provider,
+      moderationId: result.id,
+      decision: result.decision,
+      usageUnits: result.usageUnits,
+    });
+
+    return result;
+  } catch (error) {
+    if (error instanceof PromptModerationDecisionError) {
+      console.warn('[ai.moderation] blocked', {
+        userId,
+        localTaskId,
+        externalId,
+        stage,
+        mediaType,
+        provider,
+        model,
+        moderationProvider: error.result.provider,
+        moderationId: error.result.id,
+        decision: error.result.decision,
+        usageUnits: error.result.usageUnits,
+      });
+
+      throw new Error(CREEM_PROMPT_MODERATION_REJECTED_MESSAGE);
+    }
+
+    console.warn('[ai.moderation] unavailable', {
+      userId,
+      localTaskId,
+      externalId,
+      stage,
+      mediaType,
+      provider,
+      model,
+      failClosed: isCreemPromptModerationFailClosed(configs),
+      error,
+    });
+
+    if (isCreemPromptModerationFailClosed(configs)) {
+      throw new Error(CREEM_PROMPT_MODERATION_UNAVAILABLE_MESSAGE);
+    }
+
+    return null;
+  }
+}
+
 export async function POST(request: Request) {
   let currentUserId: string | null = null;
   let fallbackMediaType: string | null = null;
@@ -1100,6 +1228,7 @@ export async function POST(request: Request) {
       throw new Error('no auth, please sign in');
     }
     currentUserId = user.id;
+    const localTaskId = getUuid();
 
     // todo: get cost credits from settings
     let costCredits = 4;
@@ -1440,8 +1569,35 @@ export async function POST(request: Request) {
       };
     }
 
+    const trimmedPrompt = typeof prompt === 'string' ? prompt.trim() : '';
+    const trimmedProviderPrompt =
+      typeof providerPrompt === 'string' ? providerPrompt.trim() : '';
+    await moderateGenerationPrompt({
+      configs,
+      mediaType,
+      prompt: trimmedPrompt,
+      userId: user.id,
+      localTaskId,
+      provider,
+      model,
+      stage: 'user_prompt',
+    });
+
+    if (trimmedProviderPrompt && trimmedProviderPrompt !== trimmedPrompt) {
+      await moderateGenerationPrompt({
+        configs,
+        mediaType,
+        prompt: trimmedProviderPrompt,
+        userId: user.id,
+        localTaskId,
+        provider,
+        model,
+        stage: 'provider_prompt',
+      });
+    }
+
     const newAITask: NewAITask = {
-      id: getUuid(),
+      id: localTaskId,
       userId: user.id,
       mediaType,
       provider,
