@@ -1273,7 +1273,7 @@ export function VideoGenerator({
 
     return t.has('form.apimart_reference_video_notice')
       ? t('form.apimart_reference_video_notice')
-      : 'Use a 480P ~ 720P reference video. Enable Real Person Mode when your reference includes a real person.';
+      : 'Use a 480P ~ 720P reference video. Members can use real-person references without enabling anything extra.';
   }, [realPersonMode, t, usesApimartSeedanceRuntime]);
 
   useEffect(() => {
@@ -4252,41 +4252,13 @@ export function VideoGenerator({
                   </div>
                 )}
 
-                {canUseRealPersonMode && (
-                  <div className="space-y-3 rounded-lg border p-4">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-sm font-medium">
-                          <span>
-                            {t.has('form.real_person_mode')
-                              ? t('form.real_person_mode')
-                              : 'Real Person Mode'}
-                          </span>
-                          <Badge
-                            variant="outline"
-                            className="rounded-full border-orange-300/70 bg-orange-200 px-2 py-0 text-[10px] leading-5 font-semibold tracking-[0.04em] text-orange-950"
-                          >
-                            {t.has('models.new') ? t('models.new') : 'NEW'}
-                          </Badge>
-                          <span className="text-primary ml-1">(+20%)</span>
-                        </div>
-                        <p className="text-muted-foreground text-xs leading-5">
-                          {t.has('form.real_person_mode_hint')
-                            ? t('form.real_person_mode_hint')
-                            : 'Use the face-enabled model for real-person references and portrait-driven clips.'}
-                        </p>
-                      </div>
-                      <Switch
-                        checked={realPersonMode}
-                        onCheckedChange={setRealPersonMode}
-                        aria-label={
-                          t.has('form.real_person_mode')
-                            ? t('form.real_person_mode')
-                            : 'Real Person Mode'
-                        }
-                      />
-                    </div>
-                  </div>
+
+                {hasQueueBypassAccess && isSeedance2xModel && (
+                  <p className="text-muted-foreground text-xs leading-5">
+                    {t.has('form.real_person_supported_notice')
+                      ? t('form.real_person_supported_notice')
+                      : 'Members can use real-person references without enabling anything extra.'}
+                  </p>
                 )}
 
                 <div className="space-y-2">
