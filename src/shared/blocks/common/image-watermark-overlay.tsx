@@ -3,7 +3,7 @@ import { cn } from '@/shared/lib/utils';
 const WATERMARK_MARKS = ['top-[52%] left-[28%]'];
 
 export function ImageWatermarkOverlay({
-  label = 'https://gpt-image-2-ai.org',
+  label = 'https://image3.org',
   className,
 }: {
   label?: string;

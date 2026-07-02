@@ -465,7 +465,7 @@ func renderPreview(to path: String) throws {
   drawBadge(text: "Precise Edit", rect: CGRect(x: 254, y: 114, width: 146, height: 48), stroke: hexColor("3D6FFF"), foreground: hexColor("EAF2FF"))
   drawBadge(text: "Reference Remix", rect: CGRect(x: 412, y: 114, width: 186, height: 48), stroke: hexColor("FF9567"), foreground: hexColor("FFF2EC"))
 
-  drawText("gpt-image-2-ai.org", rect: CGRect(x: 72, y: 56, width: 220, height: 24), size: 18, weight: .bold, color: hexColor("8AA7C3"), tracking: 2.6)
+  drawText("image3.org", rect: CGRect(x: 72, y: 56, width: 220, height: 24), size: 18, weight: .bold, color: hexColor("8AA7C3"), tracking: 2.6)
 
   drawIcon(in: CGRect(x: 748, y: 228, width: 316, height: 316))
 

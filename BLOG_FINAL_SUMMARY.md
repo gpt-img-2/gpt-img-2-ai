@@ -192,7 +192,7 @@ vercel deploy --prod
 
 ```bash
 # 1. 验证访问
-https://gpt-image-2-ai.org/blog
+https://image3.org/blog
 
 # 2. 提交 Sitemap
 Google Search Console → Sitemaps → 提交 sitemap.xml

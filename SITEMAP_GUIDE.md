@@ -113,7 +113,7 @@ Blog Posts, Style Pages, About
 
 2. **添加网站**（如果还没有）:
    ```
-   Property: https://gpt-image-2-ai.org
+   Property: https://image3.org
    验证方式: DNS, HTML file, 或 Google Analytics
    ```
 
@@ -146,7 +146,7 @@ Blog Posts, Style Pages, About
 3. **提交 Sitemap**:
    ```
    Sitemaps → Submit Sitemap
-   输入: https://gpt-image-2-ai.org/sitemap.xml
+   输入: https://image3.org/sitemap.xml
    ```
 
 ---
@@ -196,7 +196,7 @@ https://ziyuan.baidu.com
 ### 方法 1: 浏览器访问
 
 ```
-https://gpt-image-2-ai.org/sitemap.xml
+https://image3.org/sitemap.xml
 ```
 
 **应该看到**:
@@ -211,7 +211,7 @@ https://gpt-image-2-ai.org/sitemap.xml
 ```
 https://www.xml-sitemaps.com/validate-xml-sitemap.html
 
-输入: https://gpt-image-2-ai.org/sitemap.xml
+输入: https://image3.org/sitemap.xml
 点击: Validate
 ```
 
@@ -259,7 +259,7 @@ Google Search Console → Sitemaps
 ```xml
 <!-- 在 public/sitemap.xml 添加新 URL -->
 <url>
-  <loc>https://gpt-image-2-ai.org/blog/new-article</loc>
+  <loc>https://image3.org/blog/new-article</loc>
   <lastmod>2026-02-15T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
@@ -275,7 +275,7 @@ pnpm add next-sitemap
 # next-sitemap.config.js
 
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://gpt-image-2-ai.org',
+  siteUrl: process.env.NEXT_PUBLIC_APP_URL || 'https://image3.org',
   generateRobotsTxt: true,
   exclude: ['/admin/*', '/api/*'],
   robotsTxtOptions: {
@@ -486,5 +486,5 @@ CTR: 优化到 3-5%
 ---
 
 **Sitemap 位置**: `/public/sitemap.xml`
-**访问 URL**: `https://gpt-image-2-ai.org/sitemap.xml`
+**访问 URL**: `https://image3.org/sitemap.xml`
 **状态**: ✅ 已更新，可以提交！

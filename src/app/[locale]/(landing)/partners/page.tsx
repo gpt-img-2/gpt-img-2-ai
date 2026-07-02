@@ -22,10 +22,10 @@ We don't run an open directory. Listings are selective, editorially reviewed, an
 1. Add ChatGPT Image 2 Generator to your site before submitting your request. Suggested HTML:
 
 \`\`\`html
-<a href="https://gpt-image-2-ai.org" title="ChatGPT Image 2 Generator">ChatGPT Image 2 Generator</a>
+<a href="https://image3.org" title="ChatGPT Image 2 Generator">ChatGPT Image 2 Generator</a>
 \`\`\`
 
-2. Email [support@gpt-image-2-ai.org](mailto:support@gpt-image-2-ai.org) with all required information for review.
+2. Email [support@image3.org](mailto:support@image3.org) with all required information for review.
 
 3. Every submission is manually reviewed. We only approve sites that meet all of the requirements below.
 
@@ -48,7 +48,7 @@ Partner resources are not published as outbound links on this page. We keep them
 
 ## Contact
 
-If you'd like us to review your site for a possible partnership, email [support@gpt-image-2-ai.org](mailto:support@gpt-image-2-ai.org) with:
+If you'd like us to review your site for a possible partnership, email [support@image3.org](mailto:support@image3.org) with:
 
 - Your site URL
 - A short description of your audience or product

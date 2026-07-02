@@ -3,15 +3,15 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- Homepage -->
   <url>
-    <loc>https://gptimg2.art/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gptimg2.art/" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gptimg2.art/zh" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gptimg2.art/ko" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gptimg2.art/ja" />
-    <xhtml:link rel="alternate" hreflang="ms" href="https://gptimg2.art/ms" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://gptimg2.art/uk" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gptimg2.art/es" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gptimg2.art/" />
+    <loc>https://image3.org/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image3.org/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://image3.org/zh" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://image3.org/ko" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://image3.org/ja" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://image3.org/ms" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://image3.org/uk" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://image3.org/es" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image3.org/" />
     <lastmod>2026-02-15T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -19,15 +19,15 @@
 
   <!-- Create Page -->
   <url>
-    <loc>https://gptimg2.art/create</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gptimg2.art/create" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gptimg2.art/zh/create" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gptimg2.art/ko/create" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gptimg2.art/ja/create" />
-    <xhtml:link rel="alternate" hreflang="ms" href="https://gptimg2.art/ms/create" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://gptimg2.art/uk/create" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gptimg2.art/es/create" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gptimg2.art/create" />
+    <loc>https://image3.org/create</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image3.org/create" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://image3.org/zh/create" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://image3.org/ko/create" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://image3.org/ja/create" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://image3.org/ms/create" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://image3.org/uk/create" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://image3.org/es/create" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image3.org/create" />
     <lastmod>2026-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -35,15 +35,15 @@
 
   <!-- Pricing Page -->
   <url>
-    <loc>https://gptimg2.art/pricing</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gptimg2.art/pricing" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gptimg2.art/zh/pricing" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gptimg2.art/ko/pricing" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gptimg2.art/ja/pricing" />
-    <xhtml:link rel="alternate" hreflang="ms" href="https://gptimg2.art/ms/pricing" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://gptimg2.art/uk/pricing" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gptimg2.art/es/pricing" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gptimg2.art/pricing" />
+    <loc>https://image3.org/pricing</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image3.org/pricing" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://image3.org/zh/pricing" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://image3.org/ko/pricing" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://image3.org/ja/pricing" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://image3.org/ms/pricing" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://image3.org/uk/pricing" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://image3.org/es/pricing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image3.org/pricing" />
     <lastmod>2026-04-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -51,15 +51,15 @@
 
   <!-- GPT Image 2 Model Page -->
   <url>
-    <loc>https://gptimg2.art/models/gpt-image-2</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gptimg2.art/models/gpt-image-2" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gptimg2.art/zh/models/gpt-image-2" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gptimg2.art/ko/models/gpt-image-2" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gptimg2.art/ja/models/gpt-image-2" />
-    <xhtml:link rel="alternate" hreflang="ms" href="https://gptimg2.art/ms/models/gpt-image-2" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://gptimg2.art/uk/models/gpt-image-2" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gptimg2.art/es/models/gpt-image-2" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gptimg2.art/models/gpt-image-2" />
+    <loc>https://image3.org/models/gpt-image-2</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image3.org/models/gpt-image-2" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://image3.org/zh/models/gpt-image-2" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://image3.org/ko/models/gpt-image-2" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://image3.org/ja/models/gpt-image-2" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://image3.org/ms/models/gpt-image-2" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://image3.org/uk/models/gpt-image-2" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://image3.org/es/models/gpt-image-2" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image3.org/models/gpt-image-2" />
     <lastmod>2026-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
@@ -67,15 +67,15 @@
 
   <!-- Showcases Page -->
   <url>
-    <loc>https://gptimg2.art/showcases</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gptimg2.art/showcases" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gptimg2.art/zh/showcases" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gptimg2.art/ko/showcases" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gptimg2.art/ja/showcases" />
-    <xhtml:link rel="alternate" hreflang="ms" href="https://gptimg2.art/ms/showcases" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://gptimg2.art/uk/showcases" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gptimg2.art/es/showcases" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gptimg2.art/showcases" />
+    <loc>https://image3.org/showcases</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image3.org/showcases" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://image3.org/zh/showcases" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://image3.org/ko/showcases" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://image3.org/ja/showcases" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://image3.org/ms/showcases" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://image3.org/uk/showcases" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://image3.org/es/showcases" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image3.org/showcases" />
     <lastmod>2026-04-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -83,15 +83,15 @@
 
   <!-- Blog Page -->
   <url>
-    <loc>https://gptimg2.art/blog</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gptimg2.art/blog" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gptimg2.art/zh/blog" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gptimg2.art/ko/blog" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gptimg2.art/ja/blog" />
-    <xhtml:link rel="alternate" hreflang="ms" href="https://gptimg2.art/ms/blog" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://gptimg2.art/uk/blog" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gptimg2.art/es/blog" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gptimg2.art/blog" />
+    <loc>https://image3.org/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image3.org/blog" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://image3.org/zh/blog" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://image3.org/ko/blog" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://image3.org/ja/blog" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://image3.org/ms/blog" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://image3.org/uk/blog" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://image3.org/es/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image3.org/blog" />
     <lastmod>2026-04-15T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -99,15 +99,15 @@
 
   <!-- AI Video Generator -->
   <url>
-    <loc>https://gptimg2.art/ai-video-generator</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gptimg2.art/ai-video-generator" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gptimg2.art/zh/ai-video-generator" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gptimg2.art/ko/ai-video-generator" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gptimg2.art/ja/ai-video-generator" />
-    <xhtml:link rel="alternate" hreflang="ms" href="https://gptimg2.art/ms/ai-video-generator" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://gptimg2.art/uk/ai-video-generator" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gptimg2.art/es/ai-video-generator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gptimg2.art/ai-video-generator" />
+    <loc>https://image3.org/ai-video-generator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image3.org/ai-video-generator" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://image3.org/zh/ai-video-generator" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://image3.org/ko/ai-video-generator" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://image3.org/ja/ai-video-generator" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://image3.org/ms/ai-video-generator" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://image3.org/uk/ai-video-generator" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://image3.org/es/ai-video-generator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image3.org/ai-video-generator" />
     <lastmod>2026-02-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -115,15 +115,15 @@
 
   <!-- About Page -->
   <url>
-    <loc>https://gptimg2.art/about</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gptimg2.art/about" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gptimg2.art/zh/about" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gptimg2.art/ko/about" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gptimg2.art/ja/about" />
-    <xhtml:link rel="alternate" hreflang="ms" href="https://gptimg2.art/ms/about" />
-    <xhtml:link rel="alternate" hreflang="uk" href="https://gptimg2.art/uk/about" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gptimg2.art/es/about" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gptimg2.art/about" />
+    <loc>https://image3.org/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://image3.org/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://image3.org/zh/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://image3.org/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://image3.org/ja/about" />
+    <xhtml:link rel="alternate" hreflang="ms" href="https://image3.org/ms/about" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://image3.org/uk/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://image3.org/es/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://image3.org/about" />
     <lastmod>2026-04-15T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

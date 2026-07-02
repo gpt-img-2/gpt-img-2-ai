@@ -38,8 +38,8 @@
   },
   //  ！！！这里是环境变量的配置 ！！！注意：这个会提交到git上，一定要私有仓库，避免泄露，部分值做了xxx处理【【可删除这条注释】
   "vars": {
-    "NEXT_PUBLIC_APP_URL": "https://gptimg2.art",
-    "NEXT_PUBLIC_APP_NAME": "gptimg2art",
+    "NEXT_PUBLIC_APP_URL": "https://image3.org",
+    "NEXT_PUBLIC_APP_NAME": "Image3",
     "NEXT_PUBLIC_PROMPT_LIBRARY_BASE_URL": "https://img.cdance.ai/uploads/prompt-library",
     "PROMPT_LIBRARY_BASE_URL": "https://img.cdance.ai/uploads/prompt-library",
     "NEXT_PUBLIC_THEME": "default",

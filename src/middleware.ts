@@ -6,14 +6,23 @@ import { routing } from '@/core/i18n/config';
 
 const intlMiddleware = createIntlMiddleware(routing);
 
-const siteMigrationTargetOrigin = 'https://gptimg2.art';
+const siteMigrationTargetOrigin = 'https://image3.org';
 const siteMigrationSourceHosts = new Set([
+  'gptimg2.art',
+  'www.gptimg2.art',
   'gpt-image-2-ai.org',
   'www.gpt-image-2-ai.org',
   'cf-gpt-image-2-ai.org',
   'www.cf-gpt-image-2-ai.org',
+  'www.image3.org',
 ]);
-const siteMigrationUtmSource = 'gpt-image-2-ai.org';
+const staticSeoPaths = new Set([
+  '/ads.txt',
+  '/robots.txt',
+  '/sitemap.xml',
+  '/prompt-sitemap.xml',
+  '/showcase-sitemap.xml',
+]);
 
 function getSiteMigrationRedirectUrl(request: NextRequest) {
   const sourceHost = request.nextUrl.hostname.toLowerCase();
@@ -27,10 +36,6 @@ function getSiteMigrationRedirectUrl(request: NextRequest) {
     siteMigrationTargetOrigin
   );
   redirectUrl.search = request.nextUrl.search;
-
-  if (!redirectUrl.searchParams.has('utm_source')) {
-    redirectUrl.searchParams.set('utm_source', siteMigrationUtmSource);
-  }
 
   return redirectUrl;
 }
@@ -57,7 +62,11 @@ export async function middleware(request: NextRequest) {
   const siteMigrationRedirectUrl = getSiteMigrationRedirectUrl(request);
 
   if (siteMigrationRedirectUrl) {
-    return NextResponse.redirect(siteMigrationRedirectUrl, 308);
+    return NextResponse.redirect(siteMigrationRedirectUrl, 301);
+  }
+
+  if (staticSeoPaths.has(pathname)) {
+    return NextResponse.next();
   }
 
   const normalizedDuplicatedLocalePath =
@@ -137,5 +146,12 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
+  matcher: [
+    '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
+    '/ads.txt',
+    '/robots.txt',
+    '/sitemap.xml',
+    '/prompt-sitemap.xml',
+    '/showcase-sitemap.xml',
+  ],
 };

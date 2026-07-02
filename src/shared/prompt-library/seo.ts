@@ -69,7 +69,7 @@ function trimTrailingSlash(value: string) {
 }
 
 export function getCanonicalAppUrl() {
-  return trimTrailingSlash(envConfigs.app_url || 'https://gptimg2.art');
+  return trimTrailingSlash(envConfigs.app_url || 'https://image3.org');
 }
 
 export function getCanonicalUrl(path: string, locale = defaultLocale) {

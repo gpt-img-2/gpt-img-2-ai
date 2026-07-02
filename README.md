@@ -6,11 +6,11 @@
 
 > Vercel全流程闭环，不过在预览时如果要体验生图，得订阅，建议自己下载代码，使用本地走Stripe测试模式体验
 
-Vercel: [https://gpt-image-2-ai.org/](https://gpt-image-2-ai.org/)
+Vercel: [https://image3.org/](https://image3.org/)
 
 > Cloudfare由于google登录等没配置域名，所以只能看个大概（我主要是用来显示部署成功可以访问到）
 
-Cloudfare: [https://cf-gpt-image-2-ai.org/](https://cf-gpt-image-2-ai.org/)
+Cloudfare: [https://image3.org/](https://image3.org/)
 
 ## 快速上手
 
@@ -26,16 +26,16 @@ Cloudfare: [https://cf-gpt-image-2-ai.org/](https://cf-gpt-image-2-ai.org/)
 - showcases页面展示的是：Admin后台录入Prompt数据；
 - hairstyles页面展示的是：Admin后台录入Showcases数据（Tags：hairstyles）；
 
-[✨项目可导入的表预制数据](https://gpt-image-2-ai.org/docs/configuration/preset-data)
+[✨项目可导入的表预制数据](https://image3.org/docs/configuration/preset-data)
 
-[✨项目如何管理首页Showcases块、Showcases页、Hairstyles页数据](https://gpt-image-2-ai.org/docs/configuration/showcases-management)
+[✨项目如何管理首页Showcases块、Showcases页、Hairstyles页数据](https://image3.org/docs/configuration/showcases-management)
 
 
 ## 视频教程
 
-[✨Happy HorseTwo视频实战课程：AI 壁纸生成器开发视频教学（含Creem支付）（2025-12-03）](https://gpt-image-2-ai.org/docs/video-tutorials/ai-wallpaper-tutorial)
+[✨Happy HorseTwo视频实战课程：AI 壁纸生成器开发视频教学（含Creem支付）（2025-12-03）](https://image3.org/docs/video-tutorials/ai-wallpaper-tutorial)
 
-[✨Happy HorseTwo实战课程：从零搭建了一个一站式 AI 生成平台(2025-11-26)](https://gpt-image-2-ai.org/docs/video-tutorials/ai-platform-tutorial)
+[✨Happy HorseTwo实战课程：从零搭建了一个一站式 AI 生成平台(2025-11-26)](https://image3.org/docs/video-tutorials/ai-platform-tutorial)
 
 
 ## 分支
